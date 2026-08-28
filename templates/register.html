@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Health Insurance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">HealthCare Insurance</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="card form-card">
+
+        <h1>Create Account</h1>
+        <p>Register to manage your health insurance claims.</p>
+
+        <form method="POST">
+
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+        <p style="text-align:center;">
+            Already have an account?
+            <a href="/login">Login here</a>
+        </p>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Health Insurance Claim System © 2026
+</div>
+
+</body>
+</html>

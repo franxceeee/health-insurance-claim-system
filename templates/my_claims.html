@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Claims - Health Insurance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">HealthCare Insurance</div>
+
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/submit-claim">Submit Claim</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="dashboard-title">
+        <h1>My Insurance Claims</h1>
+        <p>Track the status of your submitted claims.</p>
+    </div>
+
+    <div class="table-card">
+
+        {% if claims %}
+
+        <table>
+
+            <tr>
+                <th>Claim ID</th>
+                <th>Policy ID</th>
+                <th>Amount</th>
+                <th>Reason</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+
+            {% for claim in claims %}
+
+            <tr>
+                <td>{{ claim["id"] }}</td>
+                <td>{{ claim["policy_id"] }}</td>
+                <td>₹{{ claim["claim_amount"] }}</td>
+                <td>{{ claim["reason"] }}</td>
+                <td>{{ claim["claim_date"] }}</td>
+                <td class="status">{{ claim["status"] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p style="text-align:center;">
+            No claims found.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Health Insurance Claim System © 2026
+</div>
+
+</body>
+</html>

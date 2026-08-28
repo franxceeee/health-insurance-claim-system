@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Health Insurance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">HealthCare Insurance - Admin</div>
+
+    <div class="nav-links">
+        <a href="/admin">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="dashboard-title">
+        <h1>Admin Dashboard</h1>
+        <p>Review and manage submitted insurance claims.</p>
+    </div>
+
+    <div class="table-card">
+
+        {% if claims %}
+
+        <table>
+
+            <tr>
+                <th>Claim ID</th>
+                <th>User</th>
+                <th>Email</th>
+                <th>Policy ID</th>
+                <th>Amount</th>
+                <th>Reason</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            {% for claim in claims %}
+
+            <tr>
+
+                <td>{{ claim["id"] }}</td>
+
+                <td>{{ claim["name"] }}</td>
+
+                <td>{{ claim["email"] }}</td>
+
+                <td>{{ claim["policy_id"] }}</td>
+
+                <td>₹{{ claim["claim_amount"] }}</td>
+
+                <td>{{ claim["reason"] }}</td>
+
+                <td>{{ claim["claim_date"] }}</td>
+
+                <td class="status">
+                    {{ claim["status"] }}
+                </td>
+
+                <td>
+
+                    {% if claim["status"] == "Pending" %}
+
+                    <a class="btn btn-success"
+                       href="/approve/{{ claim['id'] }}">
+                        Approve
+                    </a>
+
+                    <a class="btn btn-danger"
+                       href="/reject/{{ claim['id'] }}">
+                        Reject
+                    </a>
+
+                    {% else %}
+
+                    Completed
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p style="text-align:center;">
+            No claims available.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Health Insurance Claim System © 2026
+</div>
+
+</body>
+</html>

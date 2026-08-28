@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Claim - Health Insurance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">HealthCare Insurance</div>
+
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/my-claims">My Claims</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="card form-card">
+
+        <h1>Submit Insurance Claim</h1>
+
+        <p>Enter your claim details below.</p>
+
+        <form method="POST">
+
+            <label>Policy ID</label>
+            <input
+                type="number"
+                name="policy_id"
+                placeholder="Enter policy ID"
+                required
+            >
+
+            <label>Claim Amount</label>
+            <input
+                type="number"
+                step="0.01"
+                name="claim_amount"
+                placeholder="Enter claim amount"
+                required
+            >
+
+            <label>Reason for Claim</label>
+            <textarea
+                name="reason"
+                placeholder="Explain the reason for your claim"
+                required
+            ></textarea>
+
+            <button type="submit">Submit Claim</button>
+
+        </form>
+
+        <p style="text-align:center;">
+            <a href="/dashboard">Back to Dashboard</a>
+        </p>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Health Insurance Claim System © 2026
+</div>
+
+</body>
+</html>
